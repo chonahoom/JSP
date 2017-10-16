@@ -1,0 +1,44 @@
+
+public class GoodsDelete extends GoodsMethod {
+	String yes_no_select;
+	boolean delFlag = true;
+	
+	 public GoodsDelete(){
+	      
+
+	      
+	      while(delFlag){//삭제한 상품이 없으면 다시 검색할 수 있도록 while문을 사용
+	         System.out.print("삭제하실 상품명을 입력하세요 : ");
+	         searchName=scan.nextLine();   
+	         
+	      }
+	   }
+	 public void matchMethod(){
+		 for(int i = 0 ;i < Menulist.size();i++){
+	         
+	         if(searchName.equals(Menulist.get(i).goodsName)){
+	            System.out.println("<<찾은 상품 정보>>");
+	            System.out.println("상품명 : " + Menulist.get(i).goodsName);
+	            System.out.println("재고 : " + Menulist.get(i).goodsCount);
+	            System.out.println("가격 : " +Menulist.get(i).goodsPrice);
+	            System.out.print("삭제하실 상품이 존재합니다 . ");
+	            
+	            System.out.print("삭제하시겠습니까?(y or n) : ");
+	            yes_no_select = scan.nextLine();         // 삭제할거면 y 나 n를 눌러야 하니까 키보드 입력받구,
+	            if(yes_no_select.equals("y")){          //y면 삭제시키구, while문을 종료할거야           
+	               Menulist.remove(i);
+	               System.out.println("삭제되었습니다.");
+	               delFlag=false;                  //계속 삭제하고 싶으면 이거 없애면 계속해서 삭제할 수 있어!
+	            }else{                           // y말고 다른 버튼을 누르면 while문을 종료할거야.
+	               delFlag=false;
+	            }
+	        
+	         }else{
+	            searchFail++;                     //삭제하고자 하는 상품명이 각 인덱스에 없으면 1씩 증가하구
+	         }
+	      }
+	      if(searchFail == Menulist.size()){            //모든 인덱스에 없으면 그 길이는 컬렉션의 길이와 같으므로, 찾고자하는 상품명이 없는것!!>_<
+	         System.out.println("삭제하실 상품이 존재하지 않습니다."); //삭제할 상품명이 존재하지 않으면 delFlag에 false를 넣은 적이 없으니까 while문이 다시 반복돼!
+	      }
+	 }
+}

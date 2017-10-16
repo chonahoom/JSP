@@ -1,0 +1,15 @@
+public class Goods {
+
+	   String goodsName;
+	   int goodsCount;
+	   int goodsPrice;
+	  
+	   Goods(String name, int count, int price){
+		   
+		   this.goodsName=name;
+		   this.goodsCount=count;
+		   this.goodsPrice=price;
+		   
+		
+	   }
+}
